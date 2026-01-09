@@ -1,0 +1,4 @@
+res://scenes/base.tscn
+res://shaders/checkered_text.tres
+res://scripts/player.gd
+res://scenes/player.tscn

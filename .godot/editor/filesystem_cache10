@@ -1,0 +1,11 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1767970203
+::res://assets/::1767970514
+icon.png::CompressedTexture2D::3872998490202591269::1767970514::1767970522::1::::<><><>0<>0<>3d92267e99146e0120c2397c655a4a38<>res://.godot/imported/icon.png-b6a7fb2db36edd3d95dc42f1dc8c1c5d.ctex::
+::res://scenes/::1767970446
+base.tscn::PackedScene::7031422224217455938::1767970446::0::1::::<><><>0<>0<><>::uid://d3enmqypxhrci::::res://shaders/checkered_text.tres<>uid://bw1drfqajadyt::::res://scenes/player.tscn
+player.tscn::PackedScene::3984461862155703007::1767970446::0::1::::<><><>0<>0<><>::uid://ckheqhdvry8h5::::res://scripts/player.gd
+::res://scripts/::1767970276
+player.gd::GDScript::5489452261994196160::1767970276::0::1::::<>CharacterBody3D<><>0<>0<><>::
+::res://shaders/::1767970446
+checkered_text.tres::VisualShader::9133618812554742040::1767970446::0::1::::<><><>0<>0<><>::
