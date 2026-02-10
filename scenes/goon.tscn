@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://262arpiba6lu"]
+
+[ext_resource type="Script" uid="uid://cpjb2m3d7xayw" path="res://scripts/goon.gd" id="1_yqbba"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_32l3e"]
+
+[node name="goon" type="CharacterBody3D"]
+script = ExtResource("1_yqbba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_32l3e")

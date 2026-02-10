@@ -4,11 +4,13 @@ extends CharacterBody3D
 @export var speed = 14
 
 @export var jump_impulse: int
-@export var gravity: int
 
 var mouse_sensi = .005
 var mouse_move: Vector2
 var wish_dir: Vector3
+
+func _init() -> void:
+	Global.player = self
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -29,7 +31,7 @@ func _physics_process(delta):
 	
 	target_velocity.x = wish_dir.x * speed
 	target_velocity.z = wish_dir.z * speed
-	target_velocity.y = velocity.y - (gravity * delta)
+	target_velocity.y = velocity.y - (Global.gravity * delta)
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		target_velocity.y = jump_impulse
 

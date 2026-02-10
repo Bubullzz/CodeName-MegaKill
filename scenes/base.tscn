@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7gcq5hpevi55"]
+[gd_scene load_steps=7 format=3 uid="uid://c7gcq5hpevi55"]
 
 [ext_resource type="Shader" uid="uid://d3enmqypxhrci" path="res://shaders/checkered_text.tres" id="1_rpg24"]
 [ext_resource type="PackedScene" uid="uid://bw1drfqajadyt" path="res://scenes/player.tscn" id="2_baglu"]
+[ext_resource type="PackedScene" uid="uid://262arpiba6lu" path="res://scenes/goon.tscn" id="3_t45w4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g5ejs"]
 size = Vector3(5000, 1, 5000)
@@ -30,4 +31,18 @@ surface_material_override/0 = SubResource("ShaderMaterial_3vi8l")
 [node name="Player" parent="." instance=ExtResource("2_baglu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64392, 0.5, -1.58216)
 jump_impulse = 25
-gravity = 45
+
+[node name="Goon" parent="." instance=ExtResource("3_t45w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.069427, 5.6858463, 5.40337)
+
+[node name="goon" parent="." instance=ExtResource("3_t45w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.655342, 0.5, 50.690697)
+
+[node name="goon2" parent="." instance=ExtResource("3_t45w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.617409, 0.5, -29.375927)
+
+[node name="goon3" parent="." instance=ExtResource("3_t45w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.152016, 15.155924, -22.715036)
+
+[node name="goon4" parent="." instance=ExtResource("3_t45w4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -303.4639, 0.5, -12.55851)
