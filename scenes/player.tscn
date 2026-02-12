@@ -11,6 +11,16 @@ script = ExtResource("1_3vyb7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09371, 0)
 shape = SubResource("CapsuleShape3D_g2els")
+debug_color = Color(0.81371295, 0.3733515, 0.44989944, 0.41960785)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.609946)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="Hurtbox" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 1.091514, 0)
+shape = SubResource("CapsuleShape3D_g2els")
+debug_color = Color(0.81371295, 0.3733515, 0.44989944, 0.41960785)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_hurtbox_entered"]

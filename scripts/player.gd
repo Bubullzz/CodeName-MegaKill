@@ -1,9 +1,14 @@
 extends CharacterBody3D
 
+class_name Player
+
+signal life_updated(health)
+
 # How fast the player moves in meters per second.
 @export var speed = 14
-
 @export var jump_impulse: int
+@export var health = 100
+@export var healthBar: ProgressBar
 
 var mouse_sensi = .005
 var mouse_move: Vector2
@@ -13,6 +18,8 @@ func _init() -> void:
 	Global.player = self
 
 func _ready() -> void:
+	#healthBar.min_value = 0
+	#healthBar.max_value = health
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
@@ -40,3 +47,10 @@ func _physics_process(delta):
 	
 	# Rotating the character
 	move_and_slide()
+
+func handle_goon_collision(goon: Goon) -> void:
+	health -= goon.damage
+	life_updated.emit(health)
+
+func _on_hurtbox_entered(body: Node3D) -> void:
+	if body is Goon: handle_goon_collision(body); return;

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://5ntplykvk5fu"]
+
+[ext_resource type="Script" uid="uid://dpocs1uf6m6u6" path="res://scripts/ui.gd" id="1_nt7q6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
+bg_color = Color(0.14, 0.049700003, 0.019599998, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yev5y"]
+bg_color = Color(0.18431373, 0.6313726, 0.20392157, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nt7q6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 4.0
+offset_bottom = 4.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_x4jx1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yev5y")
+value = 50.0
+show_percentage = false

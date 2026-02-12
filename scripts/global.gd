@@ -1,4 +1,4 @@
 extends Node
 
-var player: CharacterBody3D
+var player: Player
 var gravity = 45
