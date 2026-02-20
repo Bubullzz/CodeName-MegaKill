@@ -5,6 +5,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_32l3e"]
 
 [node name="goon" type="CharacterBody3D" unique_id=2111933101]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_yqbba")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1959394854]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://d3enmqypxhrci" path="res://shaders/checkered_text.tres" id="1_rpg24"]
 [ext_resource type="PackedScene" uid="uid://bw1drfqajadyt" path="res://scenes/player.tscn" id="2_baglu"]
-[ext_resource type="PackedScene" uid="uid://dgdgnhnvqijxe" path="res://scenes/pistol.tscn" id="3_40w10"]
+[ext_resource type="PackedScene" path="res://scenes/pistol.tscn" id="3_40w10"]
 [ext_resource type="PackedScene" uid="uid://262arpiba6lu" path="res://scenes/goon.tscn" id="3_t45w4"]
 [ext_resource type="PackedScene" uid="uid://5ntplykvk5fu" path="res://scenes/ui.tscn" id="4_h5ip5"]
 

@@ -52,8 +52,6 @@ func _input(event: InputEvent) -> void:
 		rotate_y(-event.screen_relative.x * mouse_sensi)
 		$Camera3D.rotate_x(-event.screen_relative.y * mouse_sensi)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-	if Input.is_mouse_button_pressed(1):
-		try_shoot()
 
 func _physics_process(delta):
 	var target_velocity = Vector3.ZERO
@@ -74,3 +72,6 @@ func _physics_process(delta):
 	
 	# Rotating the character
 	move_and_slide()
+
+	if Input.is_mouse_button_pressed(1):
+		try_shoot()
