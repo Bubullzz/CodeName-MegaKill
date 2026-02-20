@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://262arpiba6lu"]
+[gd_scene format=3 uid="uid://262arpiba6lu"]
 
 [ext_resource type="Script" uid="uid://cpjb2m3d7xayw" path="res://scripts/goon.gd" id="1_yqbba"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32l3e"]
 
-[node name="goon" type="CharacterBody3D"]
+[node name="goon" type="CharacterBody3D" unique_id=2111933101]
 script = ExtResource("1_yqbba")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1959394854]
 shape = SubResource("BoxShape3D_32l3e")

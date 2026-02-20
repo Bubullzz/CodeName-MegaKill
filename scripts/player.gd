@@ -3,30 +3,57 @@ extends CharacterBody3D
 class_name Player
 
 signal life_updated(health)
+signal hit(body) # Used to disply hit marker
 
 # How fast the player moves in meters per second.
 @export var speed = 14
 @export var jump_impulse: int
 @export var health = 100
-@export var healthBar: ProgressBar
-
+@export var weapon: Weapon
+var camera: Camera3D
+var ray: RayCast3D
 var mouse_sensi = .005
 var mouse_move: Vector2
 var wish_dir: Vector3
+
+func handle_goon_collision(goon: Goon) -> void:
+	health -= goon.damage
+	life_updated.emit(health)
+
+func try_shoot():
+	if weapon.can_shoot():
+		weapon.shoot()
+		var first = ray.get_collider()
+		if first is Goon:
+			print("shot goon")
+			hit.emit(first)
+			first.hit(weapon)
+		else:
+			print("shot nothing")
+	else: print("cannot shoot")
+	
+	
+
+
+func _on_hurtbox_entered(body: Node3D) -> void:
+	if body is Goon: handle_goon_collision(body); return;
+
 
 func _init() -> void:
 	Global.player = self
 
 func _ready() -> void:
-	#healthBar.min_value = 0
-	#healthBar.max_value = health
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	camera = $Camera3D
+	ray = $Camera3D/Ray
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.screen_relative.x * mouse_sensi)
 		$Camera3D.rotate_x(-event.screen_relative.y * mouse_sensi)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+	if Input.is_mouse_button_pressed(1):
+		try_shoot()
 
 func _physics_process(delta):
 	var target_velocity = Vector3.ZERO
@@ -47,10 +74,3 @@ func _physics_process(delta):
 	
 	# Rotating the character
 	move_and_slide()
-
-func handle_goon_collision(goon: Goon) -> void:
-	health -= goon.damage
-	life_updated.emit(health)
-
-func _on_hurtbox_entered(body: Node3D) -> void:
-	if body is Goon: handle_goon_collision(body); return;

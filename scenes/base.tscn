@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7gcq5hpevi55"]
+[gd_scene format=3 uid="uid://c7gcq5hpevi55"]
 
 [ext_resource type="Shader" uid="uid://d3enmqypxhrci" path="res://shaders/checkered_text.tres" id="1_rpg24"]
 [ext_resource type="PackedScene" uid="uid://bw1drfqajadyt" path="res://scenes/player.tscn" id="2_baglu"]
+[ext_resource type="PackedScene" uid="uid://dgdgnhnvqijxe" path="res://scenes/pistol.tscn" id="3_40w10"]
 [ext_resource type="PackedScene" uid="uid://262arpiba6lu" path="res://scenes/goon.tscn" id="3_t45w4"]
 [ext_resource type="PackedScene" uid="uid://5ntplykvk5fu" path="res://scenes/ui.tscn" id="4_h5ip5"]
 
@@ -16,36 +17,39 @@ size = Vector2(100, 100)
 render_priority = 0
 shader = ExtResource("1_rpg24")
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=1353077265]
 
-[node name="Ground" type="StaticBody3D" parent="."]
+[node name="Ground" type="StaticBody3D" parent="." unique_id=529462253]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1342923950]
 shape = SubResource("BoxShape3D_g5ejs")
 debug_color = Color(0.749012, 0.449002, 0.283825, 0.42)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=325510114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587654, 0.116833, 0.000907898)
 mesh = SubResource("PlaneMesh_g5ejs")
 surface_material_override/0 = SubResource("ShaderMaterial_3vi8l")
 
-[node name="Player" parent="." instance=ExtResource("2_baglu")]
+[node name="Player" parent="." unique_id=278495042 node_paths=PackedStringArray("weapon") instance=ExtResource("2_baglu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64392, 0.5, -1.58216)
 jump_impulse = 25
+weapon = NodePath("../Pistol")
 
-[node name="Goon" parent="." instance=ExtResource("3_t45w4")]
+[node name="Pistol" parent="." unique_id=821041195 instance=ExtResource("3_40w10")]
+
+[node name="Goon" parent="." unique_id=18861043 instance=ExtResource("3_t45w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.069427, 5.6858463, 5.40337)
 
-[node name="goon" parent="." instance=ExtResource("3_t45w4")]
+[node name="goon" parent="." unique_id=1612734897 instance=ExtResource("3_t45w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.655342, 0.5, 50.690697)
 
-[node name="goon2" parent="." instance=ExtResource("3_t45w4")]
+[node name="goon2" parent="." unique_id=2097540254 instance=ExtResource("3_t45w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.617409, 0.5, -29.375927)
 
-[node name="goon3" parent="." instance=ExtResource("3_t45w4")]
+[node name="goon3" parent="." unique_id=762144613 instance=ExtResource("3_t45w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.152016, 15.155924, -22.715036)
 
-[node name="goon4" parent="." instance=ExtResource("3_t45w4")]
+[node name="goon4" parent="." unique_id=1744890246 instance=ExtResource("3_t45w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -303.4639, 0.5, -12.55851)
 
-[node name="UI" parent="." instance=ExtResource("4_h5ip5")]
+[node name="UI" parent="." unique_id=571154096 instance=ExtResource("4_h5ip5")]

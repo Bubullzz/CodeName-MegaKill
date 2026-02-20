@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://5ntplykvk5fu"]
+[gd_scene format=3 uid="uid://5ntplykvk5fu"]
 
 [ext_resource type="Script" uid="uid://dpocs1uf6m6u6" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="Texture2D" uid="uid://c2uqk620chdkf" path="res://assets/crossair.png" id="2_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://duomi0obwhjjo" path="res://assets/hit_marker.png" id="2_yev5y"]
+[ext_resource type="AudioStream" uid="uid://bnnuaisva4xwf" path="res://assets/sounds/hit_marker.mp3" id="3_gdt2y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 bg_color = Color(0.14, 0.049700003, 0.019599998, 1)
@@ -16,7 +19,10 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="UI" type="Control"]
+[sub_resource type="LabelSettings" id="LabelSettings_yev5y"]
+font_size = 50
+
+[node name="UI" type="Control" unique_id=289764964]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nt7q6")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="BarContainer" type="MarginContainer" parent="." unique_id=1469267244]
 layout_mode = 1
 offset_right = 4.0
 offset_bottom = 4.0
@@ -34,7 +40,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="BarContainer" unique_id=220316931]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
@@ -42,3 +48,80 @@ theme_override_styles/background = SubResource("StyleBoxFlat_x4jx1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yev5y")
 value = 50.0
 show_percentage = false
+
+[node name="Crossair" type="Control" parent="." unique_id=1623937485]
+texture_filter = 3
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HitMarker" type="TextureRect" parent="Crossair" unique_id=1374727266]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yev5y")
+expand_mode = 5
+
+[node name="HitMarkerTimer" type="Timer" parent="Crossair/HitMarker" unique_id=2040198974]
+unique_name_in_owner = true
+wait_time = 0.1
+
+[node name="HitMarkerSound" type="AudioStreamPlayer" parent="Crossair/HitMarker" unique_id=940658811]
+unique_name_in_owner = true
+stream = ExtResource("3_gdt2y")
+
+[node name="Crossair" type="TextureRect" parent="Crossair" unique_id=2021293663]
+texture_filter = 3
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x4jx1")
+expand_mode = 5
+
+[node name="WeaponInfo" type="MarginContainer" parent="." unique_id=920030909]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="WeaponInfoLabel" type="Label" parent="WeaponInfo" unique_id=1802059420]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 / 0"
+label_settings = SubResource("LabelSettings_yev5y")
+
+[connection signal="timeout" from="Crossair/HitMarker/HitMarkerTimer" to="." method="_on_hit_marker_timer_timeout"]
