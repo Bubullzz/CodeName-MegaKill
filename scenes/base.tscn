@@ -3,8 +3,9 @@
 [ext_resource type="Shader" uid="uid://d3enmqypxhrci" path="res://shaders/checkered_text.tres" id="1_rpg24"]
 [ext_resource type="PackedScene" uid="uid://bw1drfqajadyt" path="res://scenes/player.tscn" id="2_baglu"]
 [ext_resource type="PackedScene" path="res://scenes/pistol.tscn" id="3_40w10"]
-[ext_resource type="PackedScene" uid="uid://262arpiba6lu" path="res://scenes/goon.tscn" id="3_t45w4"]
 [ext_resource type="PackedScene" uid="uid://5ntplykvk5fu" path="res://scenes/ui.tscn" id="4_h5ip5"]
+[ext_resource type="PackedScene" uid="uid://be3p8r6qjxrih" path="res://scenes/goons_manager.tscn" id="5_xvvcp"]
+[ext_resource type="Script" uid="uid://cl484a8d5fshe" path="res://scripts/goons_manager.gd" id="6_hh5oj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g5ejs"]
 size = Vector3(5000, 1, 5000)
@@ -30,26 +31,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587654, 0.116833, 0.00090
 mesh = SubResource("PlaneMesh_g5ejs")
 surface_material_override/0 = SubResource("ShaderMaterial_3vi8l")
 
-[node name="Player" parent="." unique_id=278495042 node_paths=PackedStringArray("weapon") instance=ExtResource("2_baglu")]
+[node name="Player" parent="." unique_id=278495042 node_paths=PackedStringArray("left_weapon", "right_weapon") instance=ExtResource("2_baglu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64392, 0.5, -1.58216)
 jump_impulse = 25
-weapon = NodePath("../Pistol")
+left_weapon = NodePath("../Pistol")
+right_weapon = NodePath("../Pistol2")
 
-[node name="Pistol" parent="." unique_id=821041195 instance=ExtResource("3_40w10")]
+[node name="Pistol2" parent="." unique_id=821041195 instance=ExtResource("3_40w10")]
 
-[node name="Goon" parent="." unique_id=18861043 instance=ExtResource("3_t45w4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.069427, 5.6858463, 5.40337)
-
-[node name="goon" parent="." unique_id=1612734897 instance=ExtResource("3_t45w4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.655342, 0.5, 50.690697)
-
-[node name="goon2" parent="." unique_id=2097540254 instance=ExtResource("3_t45w4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.617409, 0.5, -29.375927)
-
-[node name="goon3" parent="." unique_id=762144613 instance=ExtResource("3_t45w4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.152016, 15.155924, -22.715036)
-
-[node name="goon4" parent="." unique_id=1744890246 instance=ExtResource("3_t45w4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -303.4639, 0.5, -12.55851)
+[node name="Pistol" parent="." unique_id=1052627702 instance=ExtResource("3_40w10")]
 
 [node name="UI" parent="." unique_id=571154096 instance=ExtResource("4_h5ip5")]
+
+[node name="GoonsManager" parent="." unique_id=1590915699 instance=ExtResource("5_xvvcp")]
+script = ExtResource("6_hh5oj")

@@ -102,7 +102,26 @@ grow_vertical = 2
 texture = ExtResource("2_x4jx1")
 expand_mode = 5
 
-[node name="WeaponInfo" type="MarginContainer" parent="." unique_id=920030909]
+[node name="LeftWeaponInfo" type="MarginContainer" parent="." unique_id=757393118]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -109.0
+offset_right = 143.0
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="LeftWeaponInfoLabel" type="Label" parent="LeftWeaponInfo" unique_id=1124941856]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 / 0"
+label_settings = SubResource("LabelSettings_yev5y")
+
+[node name="RightWeaponInfo" type="MarginContainer" parent="." unique_id=920030909]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -118,10 +137,27 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="WeaponInfoLabel" type="Label" parent="WeaponInfo" unique_id=1802059420]
+[node name="RightWeaponInfoLabel" type="Label" parent="RightWeaponInfo" unique_id=1802059420]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0 / 0"
 label_settings = SubResource("LabelSettings_yev5y")
+
+[node name="WeaponSprites" type="HBoxContainer" parent="." unique_id=535618080]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="WeaponLeft" type="TextureRect" parent="WeaponSprites" unique_id=893552826]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="WeaponRight" type="TextureRect" parent="WeaponSprites" unique_id=1456404986]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
 
 [connection signal="timeout" from="Crossair/HitMarker/HitMarkerTimer" to="." method="_on_hit_marker_timer_timeout"]

@@ -15,7 +15,7 @@ var is_reloading = false
 var weapon_name = "dummy"
 @export var firerated_player: AudioStreamPlayer
 var shoot_player: AudioStreamPlayer
-
+var sprite: Sprite2D
 
 func setup_sound_players(default = false):
 	firerated_player = AudioStreamPlayer.new()

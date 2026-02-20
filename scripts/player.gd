@@ -9,7 +9,8 @@ signal hit(body) # Used to disply hit marker
 @export var speed = 14
 @export var jump_impulse: int
 @export var health = 100
-@export var weapon: Weapon
+@export var left_weapon: Weapon
+@export var right_weapon: Weapon
 var camera: Camera3D
 var ray: RayCast3D
 var mouse_sensi = .005
@@ -20,24 +21,20 @@ func handle_goon_collision(goon: Goon) -> void:
 	health -= goon.damage
 	life_updated.emit(health)
 
-func try_shoot():
+func try_shoot(weapon: Weapon):
 	if weapon.can_shoot():
 		weapon.shoot()
 		var first = ray.get_collider()
 		if first is Goon:
 			print("shot goon")
-			hit.emit(first)
+			hit.emit(first) # send info to UI
 			first.hit(weapon)
 		else:
 			print("shot nothing")
 	else: print("cannot shoot")
-	
-	
-
 
 func _on_hurtbox_entered(body: Node3D) -> void:
 	if body is Goon: handle_goon_collision(body); return;
-
 
 func _init() -> void:
 	Global.player = self
@@ -52,7 +49,15 @@ func _input(event: InputEvent) -> void:
 		rotate_y(-event.screen_relative.x * mouse_sensi)
 		$Camera3D.rotate_x(-event.screen_relative.y * mouse_sensi)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+	if Input.is_key_pressed(KEY_0):
+		Goon.instantiate()
 
+func handle_click_input() -> void:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		try_shoot(left_weapon)
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		try_shoot(right_weapon)
+		
 func _physics_process(delta):
 	var target_velocity = Vector3.ZERO
 
@@ -72,6 +77,7 @@ func _physics_process(delta):
 	
 	# Rotating the character
 	move_and_slide()
-
-	if Input.is_mouse_button_pressed(1):
-		try_shoot()
+	
+	handle_click_input()
+	
+	
