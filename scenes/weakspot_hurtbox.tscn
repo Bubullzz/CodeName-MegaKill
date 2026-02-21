@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cks3yur6u3noe"]
+
+[ext_resource type="Script" uid="uid://7816wniw5cle" path="res://scenes/weakspot_hurtbox.gd" id="1_hyeuf"]
+
+[node name="WeakspotHurtbox" type="Area3D" unique_id=1945772333]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_hyeuf")

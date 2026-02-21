@@ -25,13 +25,14 @@ func try_shoot(weapon: Weapon):
 	if weapon.can_shoot():
 		weapon.shoot()
 		var first = ray.get_collider()
-		if first is Goon:
-			print("shot goon")
+		if first != null:
+			print(first.get_class())
+		else:
+			print("first is null")
+		if first is CustomHurtbox:
+			print("shot customhurtbox")
 			hit.emit(first) # send info to UI
 			first.hit(weapon)
-		else:
-			print("shot nothing")
-	else: print("cannot shoot")
 
 func _on_hurtbox_entered(body: Node3D) -> void:
 	if body is Goon: handle_goon_collision(body); return;

@@ -23,6 +23,11 @@ func hit(w: Weapon):
 	if health <= 0:
 		queue_free()
 
+func weakspot_hit(w: Weapon):
+	health -= w.damage * 3
+	if health <= 0:
+		queue_free()
+
 func _physics_process(delta: float) -> void:
 	var dir = (Global.player.position - self.position).normalized()
 	dir.y -= delta * Global.gravity

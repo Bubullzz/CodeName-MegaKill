@@ -48,7 +48,6 @@ func can_shoot()-> bool:
 		print("no ammo")
 		return false
 	if Time.get_ticks_msec() < last_shot + fire_rate:
-		print("firerated");
 		firerated_player.play()
 		return false
 	

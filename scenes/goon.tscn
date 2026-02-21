@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://262arpiba6lu"]
 
 [ext_resource type="Script" uid="uid://cpjb2m3d7xayw" path="res://scripts/goon.gd" id="1_yqbba"]
+[ext_resource type="Script" uid="uid://0jkquaqdb3xp" path="res://scenes/body_hurtbox.gd" id="2_2p5ge"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32l3e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrt3b"]
+size = Vector3(1, 0.99902344, 1)
 
 [node name="goon" type="CharacterBody3D" unique_id=2111933101]
 collision_layer = 4
@@ -12,4 +16,13 @@ script = ExtResource("1_yqbba")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1959394854]
 shape = SubResource("BoxShape3D_32l3e")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=489985166]
+[node name="CustomHurtbox" type="Area3D" parent="." unique_id=1438678428 node_paths=PackedStringArray("goon")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_2p5ge")
+goon = NodePath("..")
+metadata/_custom_type_script = "uid://0jkquaqdb3xp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CustomHurtbox" unique_id=1546774341]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.00048828125, 0)
+shape = SubResource("BoxShape3D_xrt3b")

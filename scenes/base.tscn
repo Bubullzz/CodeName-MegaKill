@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://d3enmqypxhrci" path="res://shaders/checkered_text.tres" id="1_rpg24"]
 [ext_resource type="PackedScene" uid="uid://bw1drfqajadyt" path="res://scenes/player.tscn" id="2_baglu"]
-[ext_resource type="PackedScene" path="res://scenes/pistol.tscn" id="3_40w10"]
+[ext_resource type="PackedScene" uid="uid://dc1iqq12cyce4" path="res://scenes/pistol.tscn" id="3_40w10"]
 [ext_resource type="PackedScene" uid="uid://5ntplykvk5fu" path="res://scenes/ui.tscn" id="4_h5ip5"]
 [ext_resource type="PackedScene" uid="uid://be3p8r6qjxrih" path="res://scenes/goons_manager.tscn" id="5_xvvcp"]
 [ext_resource type="Script" uid="uid://cl484a8d5fshe" path="res://scripts/goons_manager.gd" id="6_hh5oj"]
@@ -33,7 +33,9 @@ surface_material_override/0 = SubResource("ShaderMaterial_3vi8l")
 
 [node name="Player" parent="." unique_id=278495042 node_paths=PackedStringArray("left_weapon", "right_weapon") instance=ExtResource("2_baglu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64392, 0.5, -1.58216)
+speed = 14
 jump_impulse = 25
+health = 100
 left_weapon = NodePath("../Pistol")
 right_weapon = NodePath("../Pistol2")
 
