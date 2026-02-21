@@ -2,11 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cpjb2m3d7xayw" path="res://scripts/goon.gd" id="1_yqbba"]
 [ext_resource type="Script" uid="uid://0jkquaqdb3xp" path="res://scenes/body_hurtbox.gd" id="2_2p5ge"]
+[ext_resource type="Script" uid="uid://7816wniw5cle" path="res://scenes/weakspot_hurtbox.gd" id="3_xrt3b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32l3e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xrt3b"]
 size = Vector3(1, 0.99902344, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lvo0j"]
 
 [node name="goon" type="CharacterBody3D" unique_id=2111933101]
 collision_layer = 4
@@ -24,5 +27,17 @@ goon = NodePath("..")
 metadata/_custom_type_script = "uid://0jkquaqdb3xp"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CustomHurtbox" unique_id=1546774341]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.00048828125, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00048828125, 0)
 shape = SubResource("BoxShape3D_xrt3b")
+
+[node name="WeakspotHurtbox" type="Area3D" parent="." unique_id=1159168120 node_paths=PackedStringArray("goon")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_xrt3b")
+goon = NodePath("..")
+metadata/_custom_type_script = "uid://7816wniw5cle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WeakspotHurtbox" unique_id=1614599056]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.42719752, 0)
+shape = SubResource("BoxShape3D_lvo0j")
+debug_color = Color(0.9450875, 0.1759749, 0.40388775, 0.41960785)
