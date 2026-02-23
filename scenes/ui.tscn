@@ -46,7 +46,7 @@ custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_x4jx1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yev5y")
-value = 50.0
+value = 100.0
 show_percentage = false
 
 [node name="Crossair" type="Control" parent="." unique_id=1623937485]
