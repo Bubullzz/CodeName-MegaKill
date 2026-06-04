@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cpjb2m3d7xayw" path="res://scripts/goon.gd" id="1_yqbba"]
 [ext_resource type="Script" uid="uid://0jkquaqdb3xp" path="res://scripts/body_hurtbox.gd" id="2_2p5ge"]
 [ext_resource type="Script" uid="uid://7816wniw5cle" path="res://scripts/weakspot_hurtbox.gd" id="3_xrt3b"]
+[ext_resource type="PackedScene" uid="uid://cwmysuopjcerq" path="res://assets/Spider_incroyable.glb" id="4_lvo0j"]
+[ext_resource type="Script" uid="uid://suy82x121iat" path="res://scripts/move_component.gd" id="5_ovaai"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32l3e"]
 
@@ -12,6 +14,7 @@ size = Vector3(1, 0.99902344, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lvo0j"]
 
 [node name="goon" type="CharacterBody3D" unique_id=2111933101]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_yqbba")
@@ -41,3 +44,11 @@ metadata/_custom_type_script = "uid://7816wniw5cle"
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.42719752, 0)
 shape = SubResource("BoxShape3D_lvo0j")
 debug_color = Color(0.9450875, 0.1759749, 0.40388775, 0.41960785)
+
+[node name="Spider_incroyable" parent="." unique_id=157226290 instance=ExtResource("4_lvo0j")]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -0.06297696, -0.03873205, 0.007300973)
+
+[node name="MoveComponent" type="Node" parent="." unique_id=1648261960 node_paths=PackedStringArray("body")]
+script = ExtResource("5_ovaai")
+body = NodePath("..")
+metadata/_custom_type_script = "uid://suy82x121iat"

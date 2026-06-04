@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cux3w4pt1ik7y"]
+
+[ext_resource type="Script" uid="uid://c4rmvjgwvdrj6" path="res://scripts/whatever.gd" id="1_xplc2"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_my838"]
+inner_radius = 1.122
+rings = 6
+ring_segments = 5
+
+[sub_resource type="TorusMesh" id="TorusMesh_xplc2"]
+inner_radius = 1.122
+rings = 8
+
+[sub_resource type="TorusMesh" id="TorusMesh_3x6wp"]
+inner_radius = 1.122
+rings = 17
+
+[node name="Whatever" type="Node3D" unique_id=1813852127]
+
+[node name="Outer" type="MeshInstance3D" parent="." unique_id=1880517193]
+mesh = SubResource("TorusMesh_my838")
+
+[node name="Middle" type="MeshInstance3D" parent="Outer" unique_id=1430035738]
+transform = Transform3D(0.65629727, 0, 0, 0, 1, 0, 0, 0, 0.65629727, 0, 0, 0)
+mesh = SubResource("TorusMesh_xplc2")
+
+[node name="Inner" type="MeshInstance3D" parent="Outer/Middle" unique_id=383867387]
+transform = Transform3D(0.5398138, 0, 0, 0, 1, 0, 0, 0, 0.5398138, 0, 0, 0)
+mesh = SubResource("TorusMesh_3x6wp")
+skeleton = NodePath("../..")
+
+[node name="Manager" type="Node" parent="." unique_id=310855737 node_paths=PackedStringArray("outer", "middle", "inner")]
+script = ExtResource("1_xplc2")
+outer = NodePath("../Outer")
+middle = NodePath("../Outer/Middle")
+inner = NodePath("../Outer/Middle/Inner")
+speed_outer = 2.0
+speed_middle = 3.0
+speed_inner = 15.0
