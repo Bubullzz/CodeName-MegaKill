@@ -33,9 +33,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_3vi8l")
 
 [node name="Player" parent="." unique_id=278495042 node_paths=PackedStringArray("left_weapon", "right_weapon") instance=ExtResource("2_baglu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64392, 0.5, -1.58216)
-speed = 14
 jump_impulse = 25
-health = 100
 left_weapon = NodePath("../Pistol")
 right_weapon = NodePath("../Pistol2")
 
@@ -47,3 +45,6 @@ right_weapon = NodePath("../Pistol2")
 
 [node name="GoonsManager" parent="." unique_id=1590915699 instance=ExtResource("5_xvvcp")]
 script = ExtResource("6_hh5oj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1438451221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 22, 0)
