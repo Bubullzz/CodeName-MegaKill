@@ -2,15 +2,19 @@ extends CharacterBody3D
 
 class_name Goon
 
-var move_speed = 10.
-var health = 40
-var target: CharacterBody3D = null
-@export var damage = 10
 @onready var move_component: MoveComponent = $MoveComponent
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var target_player_component: TargetPlayerComponent = $TargetPlayerComponent
+
+@export var damage = 10
+var direction_to_player := Vector3(0.,0.,0.)
 
 func _ready() -> void:
 	$Spider_incroyable/AnimationPlayer.play("ArmatureAction")
 	$Spider_incroyable/AnimationPlayer.speed_scale = 5
+	health_component.died.connect(func(): queue_free())
+	target_player_component.updated_direction \
+		.connect(func(dir: Vector3): direction_to_player = dir.normalized())
 
 static func instantiate() -> Goon:
 	var instance: Goon = preload("res://scenes/goon.tscn").instantiate()
@@ -24,16 +28,11 @@ static func instantiate() -> Goon:
 	return instance
 	
 func hit(w: Weapon):
-	health -= w.damage
-	if health <= 0:
-		queue_free()
+	health_component.damage(w.damage)
 
 func weakspot_hit(w: Weapon):
-	health -= w.damage * 3
-	if health <= 0:
-		queue_free()
+	health_component.damage(w.damage * 3)
 
 func _physics_process(delta: float) -> void:
-	var dir = (Global.player.position - self.position).normalized()
-	move_component.move(Vector2(dir.x, dir.z), delta)
+	move_component.move(Vector2(direction_to_player.x, direction_to_player.z), delta)
 	

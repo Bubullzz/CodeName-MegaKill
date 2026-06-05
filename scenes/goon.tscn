@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://7816wniw5cle" path="res://scripts/weakspot_hurtbox.gd" id="3_xrt3b"]
 [ext_resource type="PackedScene" uid="uid://cwmysuopjcerq" path="res://assets/Spider_incroyable.glb" id="4_lvo0j"]
 [ext_resource type="Script" uid="uid://suy82x121iat" path="res://scripts/move_component.gd" id="5_ovaai"]
+[ext_resource type="Script" uid="uid://bd74ox5l6shpo" path="res://scripts/health_component.gd" id="6_23mmg"]
+[ext_resource type="PackedScene" uid="uid://b21j6hh7458a3" path="res://scenes/components/target_player_component.tscn" id="7_23mmg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32l3e"]
 
@@ -52,3 +54,10 @@ transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.2999
 script = ExtResource("5_ovaai")
 body = NodePath("..")
 metadata/_custom_type_script = "uid://suy82x121iat"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1751233331]
+script = ExtResource("6_23mmg")
+metadata/_custom_type_script = "uid://bd74ox5l6shpo"
+
+[node name="TargetPlayerComponent" parent="." unique_id=739288033 instance=ExtResource("7_23mmg")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
