@@ -56,6 +56,6 @@ func can_shoot()-> bool:
 func shoot()-> void:
 	curr_ammo -= 1
 	last_shot = Time.get_ticks_msec()
-	shoot_player.play()
+	#shoot_player.play()
 	
 	weapon_updated.emit(self)

@@ -8,9 +8,6 @@ func update_direction():
 	direction = Global.player.position - self.global_position
 	updated_direction.emit(direction)
 	await get_tree().create_timer(delay_between_updates).timeout
-	print(direction)
-	print("player ", Global.player.position)
-	print("me ", self.position)
 	update_direction()
 
 func _ready():

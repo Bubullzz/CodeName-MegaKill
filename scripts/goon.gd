@@ -5,6 +5,8 @@ class_name Goon
 @onready var move_component: MoveComponent = $MoveComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var target_player_component: TargetPlayerComponent = $TargetPlayerComponent
+@onready var body_hurtbox: CustomHurtbox = $BodyHurtbox
+@onready var weakspot_hurtbox: CustomHurtbox = $WeakspotHurtbox
 
 @export var damage = 10
 var direction_to_player := Vector3(0.,0.,0.)
@@ -15,6 +17,8 @@ func _ready() -> void:
 	health_component.died.connect(func(): queue_free())
 	target_player_component.updated_direction \
 		.connect(func(dir: Vector3): direction_to_player = dir.normalized())
+	body_hurtbox.got_hit.connect(hit)
+	weakspot_hurtbox.got_hit.connect(weakspot_hit)
 
 static func instantiate() -> Goon:
 	var instance: Goon = preload("res://scenes/goon.tscn").instantiate()
@@ -32,6 +36,7 @@ func hit(w: Weapon):
 
 func weakspot_hit(w: Weapon):
 	health_component.damage(w.damage * 3)
+	print("wak")
 
 func _physics_process(delta: float) -> void:
 	move_component.move(Vector2(direction_to_player.x, direction_to_player.z), delta)

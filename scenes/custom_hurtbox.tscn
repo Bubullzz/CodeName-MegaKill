@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d3tbg5bsvm8rc"]
+
+[ext_resource type="Script" uid="uid://0jkquaqdb3xp" path="res://scripts/custom_hurtbox.gd" id="1_ne70o"]
+
+[node name="CustomHurtbox" type="Area3D" unique_id=2047675325]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ne70o")
