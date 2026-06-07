@@ -29,9 +29,3 @@ func move(direction: Vector2, delta: float) -> void:
 	body.move_and_slide()
 	return
 	
-# I have to create the rotationcomponent
-func rotate(direction: Vector2):
-	# Face movement direction
-	if direction.length_squared() > 0.001:
-		var look_dir := Vector3(-direction.x, 0.0, -direction.y).normalized()
-		body.look_at(body.global_position + look_dir, Vector3.UP)

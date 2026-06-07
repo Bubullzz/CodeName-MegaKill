@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cwmysuopjcerq" path="res://assets/Spider_incroyable.glb" id="4_lvo0j"]
 [ext_resource type="Script" uid="uid://suy82x121iat" path="res://scripts/move_component.gd" id="5_ovaai"]
 [ext_resource type="Script" uid="uid://bd74ox5l6shpo" path="res://scripts/health_component.gd" id="6_23mmg"]
+[ext_resource type="Script" uid="uid://dqb04dxctlsba" path="res://scripts/rotation_component.gd" id="6_j6mg7"]
 [ext_resource type="PackedScene" uid="uid://b21j6hh7458a3" path="res://scenes/components/target_player_component.tscn" id="7_23mmg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32l3e"]
@@ -55,6 +56,11 @@ metadata/_custom_type_script = "uid://suy82x121iat"
 [node name="HealthComponent" type="Node" parent="." unique_id=1751233331]
 script = ExtResource("6_23mmg")
 metadata/_custom_type_script = "uid://bd74ox5l6shpo"
+
+[node name="RotationComponent" type="Node" parent="." unique_id=724751862 node_paths=PackedStringArray("rotatee")]
+script = ExtResource("6_j6mg7")
+rotatee = NodePath("..")
+metadata/_custom_type_script = "uid://dqb04dxctlsba"
 
 [node name="TargetPlayerComponent" parent="." unique_id=739288033 instance=ExtResource("7_23mmg")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)

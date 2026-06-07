@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bely0j6j6uet2"]
+
+[ext_resource type="Script" uid="uid://b1xco7iic0tmw" path="res://scripts/sniper.gd" id="1_hn2em"]
+[ext_resource type="PackedScene" uid="uid://bvb4u6d002syr" path="res://scenes/components/ammo_component.tscn" id="2_ohs8w"]
+[ext_resource type="PackedScene" uid="uid://tikrwhllr2l3" path="res://scenes/components/shooting_component.tscn" id="3_aip7g"]
+
+[node name="Sniper" type="Node3D" unique_id=1948452049]
+script = ExtResource("1_hn2em")
+metadata/_custom_type_script = "uid://cnrgngifamh8n"
+
+[node name="AmmoComponent" parent="." unique_id=1855024653 node_paths=PackedStringArray("parent_weapon") instance=ExtResource("2_ohs8w")]
+max_ammo = 3
+reload_time = 4.0
+fire_rate = 1000
+parent_weapon = NodePath("..")
+
+[node name="ShootingComponent" parent="." unique_id=503271971 node_paths=PackedStringArray("weapon") instance=ExtResource("3_aip7g")]
+weapon = NodePath("..")

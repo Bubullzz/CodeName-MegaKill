@@ -7,6 +7,7 @@ class_name Goon
 @onready var target_player_component: TargetPlayerComponent = $TargetPlayerComponent
 @onready var body_hurtbox: CustomHurtbox = $BodyHurtbox
 @onready var weakspot_hurtbox: CustomHurtbox = $WeakspotHurtbox
+@onready var rotation_component: RotationComponent = $RotationComponent
 
 @export var damage = 10
 var direction_to_player := Vector3(0.,0.,0.)
@@ -32,11 +33,14 @@ static func instantiate() -> Goon:
 	return instance
 	
 func hit(w: Weapon):
-	health_component.damage(w.damage)
+	health_component.damage(w.get_damage())
 
 func weakspot_hit(w: Weapon):
-	health_component.damage(w.damage * 3)
+	health_component.damage(w.get_damage() * 3)
 
 func _physics_process(delta: float) -> void:
-	move_component.move(Vector2(direction_to_player.x, direction_to_player.z), delta)
+	var dir_2d = Vector2(direction_to_player.x, direction_to_player.z)
+	move_component.move(dir_2d, delta)
+	rotation_component.rotate(dir_2d)
+	
 	

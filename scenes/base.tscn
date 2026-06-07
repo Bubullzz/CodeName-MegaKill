@@ -2,10 +2,10 @@
 
 [ext_resource type="Shader" uid="uid://d3enmqypxhrci" path="res://shaders/checkered_text.tres" id="1_rpg24"]
 [ext_resource type="PackedScene" uid="uid://bw1drfqajadyt" path="res://scenes/player.tscn" id="2_baglu"]
-[ext_resource type="PackedScene" uid="uid://dc1iqq12cyce4" path="res://scenes/pistol.tscn" id="3_40w10"]
 [ext_resource type="PackedScene" uid="uid://5ntplykvk5fu" path="res://scenes/ui.tscn" id="4_h5ip5"]
 [ext_resource type="PackedScene" uid="uid://be3p8r6qjxrih" path="res://scenes/goons_manager.tscn" id="5_xvvcp"]
 [ext_resource type="Script" uid="uid://cl484a8d5fshe" path="res://scripts/goons_manager.gd" id="6_hh5oj"]
+[ext_resource type="PackedScene" uid="uid://bely0j6j6uet2" path="res://scenes/weapons/sniper.tscn" id="6_xvvcp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g5ejs"]
 size = Vector3(5000, 1, 5000)
@@ -33,13 +33,8 @@ surface_material_override/0 = SubResource("ShaderMaterial_3vi8l")
 
 [node name="Player" parent="." unique_id=278495042 node_paths=PackedStringArray("left_weapon", "right_weapon") instance=ExtResource("2_baglu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64392, 0.5, -1.58216)
-jump_impulse = 25
-left_weapon = NodePath("../Pistol")
-right_weapon = NodePath("../Pistol2")
-
-[node name="Pistol2" parent="." unique_id=821041195 instance=ExtResource("3_40w10")]
-
-[node name="Pistol" parent="." unique_id=1052627702 instance=ExtResource("3_40w10")]
+left_weapon = NodePath("../Sniper")
+right_weapon = NodePath("../Sniper2")
 
 [node name="UI" parent="." unique_id=571154096 instance=ExtResource("4_h5ip5")]
 
@@ -48,3 +43,9 @@ script = ExtResource("6_hh5oj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1438451221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 22, 0)
+
+[node name="Sniper" parent="." unique_id=1948452049 instance=ExtResource("6_xvvcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.75356, 0.5, 30.3146)
+
+[node name="Sniper2" parent="." unique_id=1658805590 instance=ExtResource("6_xvvcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6352806, 0.4999962, 36.8774)

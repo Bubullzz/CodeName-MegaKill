@@ -26,9 +26,10 @@ func _ready() -> void:
 	input_component.mouse_movement_updated.connect(mouse_moved)
 	
 	# Needs clearer handle of start shooting / stoped shooting 
-	input_component.left_click.connect(func(): left_weapon.shoot(ray))
-	input_component.right_click.connect(func(): right_weapon.shoot(ray))
-
+	input_component.left_click.connect(func(): left_weapon.start_shooting_weapon())
+	input_component.right_click.connect(func(): right_weapon.start_shooting_weapon())
+	input_component.left_click_released.connect(func(): left_weapon.stop_shooting_weapon())
+	input_component.right_click_released.connect(func(): right_weapon.stop_shooting_weapon())
 	# Already editor-connected
 	# hurt_box.area_entered.connect(_on_hurtbox_entered)
 

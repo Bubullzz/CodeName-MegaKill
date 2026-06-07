@@ -1,6 +1,13 @@
-[gd_scene format=3 uid="uid://dc1iqq12cyce4"]
+[gd_scene format=3 uid="uid://dgdgnhnvqijxe"]
 
-[ext_resource type="Script" uid="uid://o2huyyupa5sy" path="res://scripts/weapons/pistol.gd" id="1_igbvm"]
+[sub_resource type="GDScript" id="GDScript_46jcc"]
+script/source = "extends Weapon
+
+class_name Pistol
+
+func _ready() -> void:
+	pass
+"
 
 [node name="Pistol" type="Node" unique_id=821041195]
-script = ExtResource("1_igbvm")
+script = SubResource("GDScript_46jcc")

@@ -9,21 +9,18 @@ func mark_hit(_b):
 	%HitMarkerTimer.start()
 	%HitMarkerSound.play()
 
-func update_weapon_info(w: Weapon):
-	if w == Global.player.right_weapon:
-		%RightWeaponInfoLabel.text = "%d / %d" % [w.curr_ammo, w.max_ammo]
-	elif w == Global.player.left_weapon:
-		%LeftWeaponInfoLabel.text = "%d / %d" % [w.curr_ammo, w.max_ammo]
-	else:
-		print("this shouldn't be printed")
+func update_left_label_info(current_ammo: int, max_ammo: int):
+	%LeftWeaponInfoLabel.text = "%d / %d" % [current_ammo,max_ammo]
+
+func update_right_label_info(current_ammo: int, max_ammo: int):
+	%RightWeaponInfoLabel.text = "%d / %d" % [current_ammo,max_ammo]
+
 
 func _ready() -> void:
 	Global.player.health_component.health_updated.connect(func (curr, _max): %ProgressBar.value = curr)
 	Global.player.hit.connect(mark_hit)
-	Global.player.left_weapon.weapon_updated.connect(update_weapon_info)
-	Global.player.right_weapon.weapon_updated.connect(update_weapon_info)
-	update_weapon_info(Global.player.left_weapon)
-	update_weapon_info(Global.player.right_weapon)
+	Global.player.left_weapon.ammo_updated.connect(update_left_label_info)
+	Global.player.right_weapon.ammo_updated.connect(update_right_label_info)
 	
 func _process(_delta):
 	if Input.is_action_pressed("pause"):
