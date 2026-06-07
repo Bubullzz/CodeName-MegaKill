@@ -18,7 +18,7 @@ func update_weapon_info(w: Weapon):
 		print("this shouldn't be printed")
 
 func _ready() -> void:
-	Global.player.life_updated.connect(func (h): %ProgressBar.value = h)
+	Global.player.health_component.health_updated.connect(func (curr, _max): %ProgressBar.value = curr)
 	Global.player.hit.connect(mark_hit)
 	Global.player.left_weapon.weapon_updated.connect(update_weapon_info)
 	Global.player.right_weapon.weapon_updated.connect(update_weapon_info)

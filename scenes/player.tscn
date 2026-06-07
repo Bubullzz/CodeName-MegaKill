@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bw1drfqajadyt"]
 
 [ext_resource type="Script" uid="uid://ckheqhdvry8h5" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bd74ox5l6shpo" path="res://scripts/health_component.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://8syvidiq10rg" path="res://scripts/input_component.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://suy82x121iat" path="res://scripts/move_component.gd" id="4_dqkch"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 height = 2.26924
@@ -12,6 +15,7 @@ script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1726358435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09371, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_g2els")
 debug_color = Color(0.81371295, 0.3733515, 0.44989944, 0.41960785)
 
@@ -27,13 +31,27 @@ collide_with_bodies = false
 debug_shape_custom_color = Color(0, 0.58896714, 0.6092122, 1)
 debug_shape_thickness = 1
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1091823624]
+[node name="HurtBox" type="Area3D" parent="." unique_id=1091823624]
 collision_layer = 0
 collision_mask = 4
 
-[node name="Hurtbox" type="CollisionShape3D" parent="Area3D" unique_id=384743655]
+[node name="HurtboxShape" type="CollisionShape3D" parent="HurtBox" unique_id=384743655]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 1.091514, 0)
 shape = SubResource("CapsuleShape3D_g2els")
 debug_color = Color(0.81371295, 0.3733515, 0.44989944, 0.41960785)
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_hurtbox_entered"]
+[node name="HealthComponent" type="Node" parent="." unique_id=1921404103]
+script = ExtResource("2_g2els")
+metadata/_custom_type_script = "uid://bd74ox5l6shpo"
+
+[node name="InputComponent" type="Node" parent="." unique_id=1338609607]
+script = ExtResource("3_qhqgy")
+metadata/_custom_type_script = "uid://8syvidiq10rg"
+
+[node name="MoveComponent" type="Node" parent="." unique_id=2110531274 node_paths=PackedStringArray("body")]
+script = ExtResource("4_dqkch")
+body = NodePath("..")
+speed = 15.0
+metadata/_custom_type_script = "uid://suy82x121iat"
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurtbox_entered"]

@@ -36,7 +36,6 @@ func hit(w: Weapon):
 
 func weakspot_hit(w: Weapon):
 	health_component.damage(w.damage * 3)
-	print("wak")
 
 func _physics_process(delta: float) -> void:
 	move_component.move(Vector2(direction_to_player.x, direction_to_player.z), delta)

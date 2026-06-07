@@ -7,6 +7,10 @@ class_name MoveComponent extends Node
 
 var wants_jump := false
 
+# helper to easily connect the signal
+func set_wants_jump():
+	wants_jump = true
+
 func move(direction: Vector2, delta: float) -> void:
 	direction = direction.normalized()
 	# Top Down Movement
@@ -23,9 +27,11 @@ func move(direction: Vector2, delta: float) -> void:
 	wants_jump = false
 	
 	body.move_and_slide()
+	return
 	
+# I have to create the rotationcomponent
+func rotate(direction: Vector2):
 	# Face movement direction
 	if direction.length_squared() > 0.001:
 		var look_dir := Vector3(-direction.x, 0.0, -direction.y).normalized()
 		body.look_at(body.global_position + look_dir, Vector3.UP)
-		
