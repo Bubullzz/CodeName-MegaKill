@@ -4,6 +4,7 @@ class_name Weapon
 extends Node
 
 signal weapon_updated(weapon)
+signal hit(damage: float, target: Node3D)
 
 var damage: int
 var max_ammo: int
@@ -53,9 +54,20 @@ func can_shoot()-> bool:
 	
 	return true 
 
-func shoot()-> void:
+
+func shoot(ray: RayCast3D)-> void:
+	if not can_shoot():
+		# Handle ayo tu peux pas tirer, sons etc
+		return
+	
 	curr_ammo -= 1
 	last_shot = Time.get_ticks_msec()
+	
+	var first = ray.get_collider()
+	if first is CustomHurtbox:
+		print("shot customhurtbox")
+		hit.emit(first) # send info to UI
+		first.hit(self)
 	#shoot_player.play()
 	
 	weapon_updated.emit(self)

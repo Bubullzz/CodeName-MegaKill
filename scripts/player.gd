@@ -23,12 +23,14 @@ func _ready() -> void:
 	# Connect signals 
 	health_component.died.connect(func(): print("I DIED !!!!!!"))
 	input_component.jump_pressed_signal.connect(move_component.set_wants_jump)
-	input_component.mouse_updated.connect(mouse_moved)
-	hurt_box.area_entered.connect(_on_hurtbox_entered)
+	input_component.mouse_movement_updated.connect(mouse_moved)
 	
-	# Misc
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# Needs clearer handle of start shooting / stoped shooting 
+	input_component.left_click.connect(func(): left_weapon.shoot(ray))
+	input_component.right_click.connect(func(): right_weapon.shoot(ray))
 
+	# Already editor-connected
+	# hurt_box.area_entered.connect(_on_hurtbox_entered)
 
 func handle_goon_collision(goon: Goon) -> void:
 	health_component.damage(goon.damage)
@@ -44,32 +46,9 @@ func mouse_moved(mouse_screen_relative: Vector2) -> void:
 	$Camera3D.rotation.x = clampf($Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 
-func try_shoot(weapon: Weapon):
-	if weapon.can_shoot():
-		weapon.shoot()
-		var first = ray.get_collider()
-		if first != null:
-			print(first.get_class())
-		else:
-			print("first is null")
-		if first is CustomHurtbox:
-			print("shot customhurtbox")
-			hit.emit(first) # send info to UI
-			first.hit(weapon)
-
-
-func handle_click_input() -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		try_shoot(left_weapon)
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		try_shoot(right_weapon)
-
-
 func _physics_process(delta):
-	input_component.update()
 	var input_dir = input_component.move_dir.normalized()
 	var direction = self.global_transform.basis * Vector3(input_dir.x, 0., input_dir.y)
 	var direction2d = Vector2(direction.x, direction.z)
 	move_component.move(direction2d, delta)
-	handle_click_input()
 	return
