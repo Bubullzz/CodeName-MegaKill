@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bvb4u6d002syr"]
 
-[ext_resource type="Script" uid="uid://cvcnju504pr1f" path="res://scripts/ammo_component.gd" id="1_820xg"]
+[ext_resource type="Script" uid="uid://cvcnju504pr1f" path="res://scripts/components/ammo_component.gd" id="1_820xg"]
 
 [node name="AmmoComponent" type="Node" unique_id=1855024653]
 script = ExtResource("1_820xg")

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bw1drfqajadyt"]
 
 [ext_resource type="Script" uid="uid://ckheqhdvry8h5" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://bd74ox5l6shpo" path="res://scripts/health_component.gd" id="2_g2els"]
-[ext_resource type="Script" uid="uid://8syvidiq10rg" path="res://scripts/input_component.gd" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://suy82x121iat" path="res://scripts/move_component.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://bd74ox5l6shpo" path="res://scripts/components/health_component.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://8syvidiq10rg" path="res://scripts/components/input_component.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://suy82x121iat" path="res://scripts/components/move_component.gd" id="4_dqkch"]
+
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 height = 2.26924

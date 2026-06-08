@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://tikrwhllr2l3"]
 
-[ext_resource type="Script" uid="uid://dwxa5gbc1elbl" path="res://scripts/shooting_component.gd" id="1_15plg"]
+[ext_resource type="Script" uid="uid://dwxa5gbc1elbl" path="res://scripts/components/shooting_component.gd" id="1_15plg"]
 
 [node name="ShootingComponent" type="Node" unique_id=503271971]
 script = ExtResource("1_15plg")

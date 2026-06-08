@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://4a0leygdyu3u"]
 
-[ext_resource type="Script" uid="uid://dqb04dxctlsba" path="res://scripts/rotation_component.gd" id="1_5dstl"]
+[ext_resource type="Script" uid="uid://dqb04dxctlsba" path="res://scripts/components/rotation_component.gd" id="1_5dstl"]
+
 
 [node name="RotationComponent" type="Node" unique_id=1342850550]
 script = ExtResource("1_5dstl")
