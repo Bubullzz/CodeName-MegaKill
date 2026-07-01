@@ -15,7 +15,6 @@ signal right_click_released
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-
 func _input(event: InputEvent) -> void:
 	# WASD
 	move_dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down")

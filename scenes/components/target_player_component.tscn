@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b21j6hh7458a3"]
 
-[ext_resource type="Script" uid="uid://dmods3rgsrwlj" path="res://scripts/target_player_component.gd" id="1_6paw2"]
+[ext_resource type="Script" uid="uid://dmods3rgsrwlj" path="res://scripts/components/target_player_component.gd" id="1_6paw2"]
 
 [node name="TargetPlayerComponent" type="Node3D" unique_id=739288033]
 script = ExtResource("1_6paw2")

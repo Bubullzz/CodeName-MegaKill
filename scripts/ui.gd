@@ -15,7 +15,6 @@ func update_left_label_info(current_ammo: int, max_ammo: int):
 func update_right_label_info(current_ammo: int, max_ammo: int):
 	%RightWeaponInfoLabel.text = "%d / %d" % [current_ammo,max_ammo]
 
-
 func _ready() -> void:
 	Global.player.health_component.health_updated.connect(func (curr, _max): %ProgressBar.value = curr)
 	Global.player.hit.connect(mark_hit)

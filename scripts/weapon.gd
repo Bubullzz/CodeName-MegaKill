@@ -4,21 +4,17 @@ signal weapon_updated(weapon)
 signal hit(damage: float, target: Node3D)
 signal ammo_updated(current_ammo: int, max_ammo: int)
 
-var weapon_name = "dummy"
-var ammo_component: Node
-var shooting_component: Node
-var recoil_component: Node
+@onready var ammo_component = $AmmoComponent
+@onready var shooting_component = $ShootingComponent
+@onready var weapon_data_component = $WeaponDataComponent
+@onready var recoil_component = $RecoilComponent
 
 func _ready() -> void:
-	ammo_component = $AmmoComponent
-	shooting_component = $ShootingComponent
-	recoil_component = $RecoilComponent
 	ammo_component.shot.connect(func(): shooting_component.shoot(Global.player.ray))
 	ammo_component.shot.connect(recoil_component.recoil)
 	
-
 func get_damage():
-	return 0
+	return weapon_data_component.damage
 
 func start_shooting_weapon()-> void:
 	ammo_component.start_shooting()

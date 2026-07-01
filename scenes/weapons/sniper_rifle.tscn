@@ -1,17 +1,18 @@
 [gd_scene format=3 uid="uid://bely0j6j6uet2"]
 
-[ext_resource type="Script" uid="uid://b1xco7iic0tmw" path="res://scripts/sniper.gd" id="1_hn2em"]
+[ext_resource type="Script" uid="uid://cnrgngifamh8n" path="res://scripts/weapon.gd" id="1_aip7g"]
 [ext_resource type="PackedScene" uid="uid://bvb4u6d002syr" path="res://scenes/components/ammo_component.tscn" id="2_ohs8w"]
 [ext_resource type="PackedScene" uid="uid://tikrwhllr2l3" path="res://scenes/components/shooting_component.tscn" id="3_aip7g"]
+[ext_resource type="Script" uid="uid://d2vxojyfquhqf" path="res://scripts/components/weapon_data_component.gd" id="4_6iuvm"]
 [ext_resource type="PackedScene" uid="uid://dwfrfhltyr2b2" path="res://assets/weapons/the_glorper.glb" id="4_aip7g"]
 [ext_resource type="PackedScene" uid="uid://drkoxyphd2j3k" path="res://scenes/components/recoil_component.tscn" id="4_xev6v"]
 
-[node name="Sniper" type="Node3D" unique_id=1948452049]
-script = ExtResource("1_hn2em")
+[node name="SniperRifle" type="Node3D" unique_id=1948452049]
+script = ExtResource("1_aip7g")
 metadata/_custom_type_script = "uid://cnrgngifamh8n"
 
 [node name="AmmoComponent" parent="." unique_id=1855024653 node_paths=PackedStringArray("parent_weapon") instance=ExtResource("2_ohs8w")]
-max_ammo = 3
+max_ammo = 4
 reload_time = 4.0
 fire_rate = 1000
 parent_weapon = NodePath("..")
@@ -30,3 +31,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010658979, 0, -2.9535336)
 
 [node name="the_glorper" parent="WeaponPivot" unique_id=494059712 instance=ExtResource("4_aip7g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7772965)
+
+[node name="WeaponDataComponent" type="Node" parent="." unique_id=627305877]
+script = ExtResource("4_6iuvm")
+weapon_name = "Sniper Rifle"
+damage = 100
+metadata/_custom_type_script = "uid://d2vxojyfquhqf"
