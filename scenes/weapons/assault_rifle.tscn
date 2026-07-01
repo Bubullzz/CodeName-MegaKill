@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dcorp3cw25s72"]
 
 [ext_resource type="Script" uid="uid://cnrgngifamh8n" path="res://scripts/weapon.gd" id="1_6ychj"]
+[ext_resource type="PackedScene" uid="uid://drkoxyphd2j3k" path="res://scenes/components/recoil_component.tscn" id="2_14wsr"]
 [ext_resource type="PackedScene" uid="uid://bvb4u6d002syr" path="res://scenes/components/ammo_component.tscn" id="2_el8vo"]
 [ext_resource type="PackedScene" uid="uid://tikrwhllr2l3" path="res://scenes/components/shooting_component.tscn" id="3_14wsr"]
 [ext_resource type="Script" uid="uid://d2vxojyfquhqf" path="res://scripts/components/weapon_data_component.gd" id="4_e1nc6"]
@@ -8,6 +9,8 @@
 [node name="AssaultRifle" type="Node3D" unique_id=1948452049]
 script = ExtResource("1_6ychj")
 metadata/_custom_type_script = "uid://cnrgngifamh8n"
+
+[node name="RecoilComponent" parent="." unique_id=1977771477 instance=ExtResource("2_14wsr")]
 
 [node name="AmmoComponent" parent="." unique_id=1855024653 node_paths=PackedStringArray("parent_weapon") instance=ExtResource("2_el8vo")]
 max_ammo = 100

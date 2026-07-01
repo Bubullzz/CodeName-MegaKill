@@ -2,12 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cnrgngifamh8n" path="res://scripts/weapon.gd" id="1_y8ai0"]
 [ext_resource type="PackedScene" uid="uid://bvb4u6d002syr" path="res://scenes/components/ammo_component.tscn" id="2_m70vx"]
+[ext_resource type="PackedScene" uid="uid://drkoxyphd2j3k" path="res://scenes/components/recoil_component.tscn" id="2_wvb0v"]
 [ext_resource type="PackedScene" uid="uid://tikrwhllr2l3" path="res://scenes/components/shooting_component.tscn" id="3_wvb0v"]
 [ext_resource type="Script" uid="uid://d2vxojyfquhqf" path="res://scripts/components/weapon_data_component.gd" id="4_6iuvm"]
 
 [node name="Revolver" type="Node3D" unique_id=59954801]
 script = ExtResource("1_y8ai0")
 metadata/_custom_type_script = "uid://cnrgngifamh8n"
+
+[node name="RecoilComponent" parent="." unique_id=1977771477 instance=ExtResource("2_wvb0v")]
 
 [node name="AmmoComponent" parent="." unique_id=1855024653 node_paths=PackedStringArray("parent_weapon") instance=ExtResource("2_m70vx")]
 max_ammo = 6
