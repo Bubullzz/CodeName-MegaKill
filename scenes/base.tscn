@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://be3p8r6qjxrih" path="res://scenes/goons_manager.tscn" id="5_xvvcp"]
 [ext_resource type="Script" uid="uid://cl484a8d5fshe" path="res://scripts/goons_manager.gd" id="6_hh5oj"]
 [ext_resource type="PackedScene" uid="uid://bely0j6j6uet2" path="res://scenes/weapons/sniper_rifle.tscn" id="6_xvvcp"]
+[ext_resource type="PackedScene" uid="uid://b2k7ovklwdmjd" path="res://scenes/weapons/revolver.tscn" id="8_vqfsp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g5ejs"]
 size = Vector3(5000, 1, 5000)
@@ -33,7 +34,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_3vi8l")
 
 [node name="Player" parent="." unique_id=278495042 node_paths=PackedStringArray("left_weapon", "right_weapon") instance=ExtResource("2_baglu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64392, 0.5, -1.58216)
-left_weapon = NodePath("../SniperRifle2")
+left_weapon = NodePath("../Revolver")
 right_weapon = NodePath("../SniperRifle")
 
 [node name="UI" parent="." unique_id=571154096 instance=ExtResource("4_h5ip5")]
@@ -49,3 +50,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.50712, 1, 60.6292)
 
 [node name="SniperRifle" parent="." unique_id=777304911 instance=ExtResource("6_xvvcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.75356, 0.5, 30.3146)
+
+[node name="Revolver" parent="." unique_id=59954801 instance=ExtResource("8_vqfsp")]
