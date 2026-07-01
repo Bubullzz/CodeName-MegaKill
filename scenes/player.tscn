@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://8syvidiq10rg" path="res://scripts/components/input_component.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://suy82x121iat" path="res://scripts/components/move_component.gd" id="4_dqkch"]
 
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 height = 2.26924
 
@@ -23,10 +22,10 @@ debug_color = Color(0.81371295, 0.3733515, 0.44989944, 0.41960785)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.5)
 
 [node name="LeftWeaponPos" type="Node3D" parent="Camera3D" unique_id=1531975461]
-transform = Transform3D(0.29926926, 0, -0.020926945, 0, 0.3, 0, 0.020926945, 0, 0.29926926, -0.7, -0.6, -0.4)
+transform = Transform3D(0.29926926, 0, -0.020926945, 0, 0.3, 0, 0.020926945, 0, 0.29926926, -0.7, -0.6, -0.5730761)
 
 [node name="RightWeaponPos" type="Node3D" parent="Camera3D" unique_id=459506760]
-transform = Transform3D(0.29926923, 0, 0.020926941, 0, 0.3, 0, -0.020926941, 0, 0.29926923, 0.7, -0.6, -0.4)
+transform = Transform3D(0.29926923, 0, 0.020926941, 0, 0.3, 0, -0.020926941, 0, 0.29926923, 0.7, -0.6, -0.5730761)
 
 [node name="Ray" type="RayCast3D" parent="Camera3D" unique_id=1101661764]
 transform = Transform3D(1, 0, 0, 0, 0, -1.0000001, 0, 1.0000001, 0, 0, 0, 1.0819931)

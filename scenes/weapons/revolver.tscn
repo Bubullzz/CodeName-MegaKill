@@ -12,10 +12,11 @@ script = ExtResource("1_y8ai0")
 metadata/_custom_type_script = "uid://cnrgngifamh8n"
 
 [node name="RecoilComponent" parent="." unique_id=1977771477 node_paths=PackedStringArray("pivot") instance=ExtResource("2_wvb0v")]
-max_angle = 0.4
-up_time = 0.1
+recoil_rotation = 0.3
+up_time = 0.04
 down_time = 0.4
 pivot = NodePath("../ModelPivot")
+recoil_transform = Vector2(0.4, 0.6)
 
 [node name="AmmoComponent" parent="." unique_id=1855024653 node_paths=PackedStringArray("parent_weapon") instance=ExtResource("2_m70vx")]
 max_ammo = 6

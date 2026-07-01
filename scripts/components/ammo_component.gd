@@ -3,9 +3,9 @@ extends Node
 @export var max_ammo: int
 @export var reload_time: float
 @export var fire_rate: int # in msec
-@export var last_shot: int = -1
 @export var is_automatic: bool
 @export var parent_weapon: Weapon
+var last_shot: int = -1
 var curr_ammo: int
 var continue_shooting := false
 var is_reloading := false
