@@ -7,11 +7,15 @@ signal ammo_updated(current_ammo: int, max_ammo: int)
 var weapon_name = "dummy"
 var ammo_component: Node
 var shooting_component: Node
+var recoil_component: Node
 
 func _ready() -> void:
 	ammo_component = $AmmoComponent
 	shooting_component = $ShootingComponent
+	recoil_component = $RecoilComponent
 	ammo_component.shot.connect(func(): shooting_component.shoot(Global.player.ray))
+	ammo_component.shot.connect(recoil_component.recoil)
+	
 
 func get_damage():
 	return 0
