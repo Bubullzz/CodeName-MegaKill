@@ -32,7 +32,11 @@ func _ready() -> void:
 	input_component.right_click_released.connect(func(): right_weapon.stop_shooting_weapon())
 	# Already editor-connected
 	# hurt_box.area_entered.connect(_on_hurtbox_entered)
-
+	right_weapon.reparent.call_deferred($Camera3D/RightWeaponPos, false)
+	left_weapon.reparent.call_deferred($Camera3D/LeftWeaponPos, false)
+	right_weapon.position = Vector3(0,0,0)
+	left_weapon.position = Vector3(0,0,0)
+	
 func handle_goon_collision(goon: Goon) -> void:
 	health_component.damage(goon.damage)
 

@@ -8,12 +8,10 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 height = 2.26924
 
-[node name="Player" type="CharacterBody3D" unique_id=2057484635 node_paths=PackedStringArray("left_weapon", "right_weapon")]
+[node name="Player" type="CharacterBody3D" unique_id=2057484635]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_3vyb7")
-left_weapon = NodePath("")
-right_weapon = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1726358435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09371, 0)
@@ -22,6 +20,12 @@ debug_color = Color(0.81371295, 0.3733515, 0.44989944, 0.41960785)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=694784933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.5)
+
+[node name="LeftWeaponPos" type="Node3D" parent="Camera3D" unique_id=1531975461]
+transform = Transform3D(0.29926926, 0, -0.020926945, 0, 0.3, 0, 0.020926945, 0, 0.29926926, -0.7, -0.6, -0.4)
+
+[node name="RightWeaponPos" type="Node3D" parent="Camera3D" unique_id=459506760]
+transform = Transform3D(0.29926923, 0, 0.020926941, 0, 0.3, 0, -0.020926941, 0, 0.29926923, 0.7, -0.6, -0.4)
 
 [node name="Ray" type="RayCast3D" parent="Camera3D" unique_id=1101661764]
 transform = Transform3D(1, 0, 0, 0, 0, -1.0000001, 0, 1.0000001, 0, 0, 0, 1.0819931)

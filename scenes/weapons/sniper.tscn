@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b1xco7iic0tmw" path="res://scripts/sniper.gd" id="1_hn2em"]
 [ext_resource type="PackedScene" uid="uid://bvb4u6d002syr" path="res://scenes/components/ammo_component.tscn" id="2_ohs8w"]
 [ext_resource type="PackedScene" uid="uid://tikrwhllr2l3" path="res://scenes/components/shooting_component.tscn" id="3_aip7g"]
+[ext_resource type="PackedScene" uid="uid://dwfrfhltyr2b2" path="res://assets/weapons/the_glorper.glb" id="4_aip7g"]
 
 [node name="Sniper" type="Node3D" unique_id=1948452049]
 script = ExtResource("1_hn2em")
@@ -16,3 +17,6 @@ parent_weapon = NodePath("..")
 
 [node name="ShootingComponent" parent="." unique_id=503271971 node_paths=PackedStringArray("weapon") instance=ExtResource("3_aip7g")]
 weapon = NodePath("..")
+
+[node name="the_glorper" parent="." unique_id=494059712 instance=ExtResource("4_aip7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010658979, 0, -0.17623723)
