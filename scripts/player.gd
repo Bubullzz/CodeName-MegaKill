@@ -7,6 +7,7 @@ signal hit(body) # Used to disply hit marker
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var input_component: InputComponent = $InputComponent
 @onready var move_component: MoveComponent = $MoveComponent
+@onready var dash_component: DashComponent = $DashComponent
 
 @onready var hurt_box: Area3D = $HurtBox
 @onready var camera: Camera3D = $Camera3D
@@ -24,6 +25,7 @@ func _ready() -> void:
 	health_component.died.connect(func(): print("I DIED !!!!!!"))
 	input_component.jump_pressed_signal.connect(move_component.set_wants_jump)
 	input_component.mouse_movement_updated.connect(mouse_moved)
+	input_component.dash.connect(func(): dash_component.dash(input_component.move_dir.normalized()))
 	
 	# Needs clearer handle of start shooting / stoped shooting 
 	input_component.left_click.connect(func(): left_weapon.start_shooting_weapon())
@@ -50,10 +52,15 @@ func mouse_moved(mouse_screen_relative: Vector2) -> void:
 	$Camera3D.rotate_x(-mouse_screen_relative.y * mouse_sensi)
 	$Camera3D.rotation.x = clampf($Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
+func global_to_local_player_3d(vec: Vector3) -> Vector3:
+	return self.global_transform.basis * vec
+
+func global_to_local_player_2d(vec: Vector2) -> Vector2:
+	var v = global_to_local_player_3d(Vector3(vec.x, 0., vec.y))
+	return Vector2(v.x, v.z)
 
 func _physics_process(delta):
 	var input_dir = input_component.move_dir.normalized()
-	var direction = self.global_transform.basis * Vector3(input_dir.x, 0., input_dir.y)
-	var direction2d = Vector2(direction.x, direction.z)
-	move_component.move(direction2d, delta)
+	var direction = global_to_local_player_2d(input_dir)
+	move_component.move(direction, delta)
 	return

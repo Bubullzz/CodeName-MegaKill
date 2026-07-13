@@ -11,6 +11,7 @@ signal left_click
 signal right_click
 signal left_click_released
 signal right_click_released
+signal dash
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -39,6 +40,9 @@ func _input(event: InputEvent) -> void:
 		left_click_released.emit()
 	if Input.is_action_just_released("right_click"):
 		right_click_released.emit()
+	
+	if Input.is_action_just_pressed("dash"):
+		dash.emit()
 	
 	# Bullshit blazing
 	if Input.is_key_pressed(KEY_0):
