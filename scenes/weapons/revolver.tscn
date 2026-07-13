@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b2k7ovklwdmjd"]
+[gd_scene format=3 uid="uid://bscqva3x54vck"]
 
 [ext_resource type="Script" uid="uid://cnrgngifamh8n" path="res://scripts/weapon.gd" id="1_y8ai0"]
 [ext_resource type="PackedScene" uid="uid://bvb4u6d002syr" path="res://scenes/components/ammo_component.tscn" id="2_m70vx"]
@@ -30,7 +30,7 @@ weapon = NodePath("..")
 [node name="WeaponDataComponent" type="Node" parent="." unique_id=1587948087]
 script = ExtResource("4_6iuvm")
 weapon_name = "Revolver"
-damage = 30
+damage = 35
 metadata/_custom_type_script = "uid://d2vxojyfquhqf"
 
 [node name="ModelPivot" type="Node3D" parent="." unique_id=1707824841]

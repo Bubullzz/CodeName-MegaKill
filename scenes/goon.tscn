@@ -32,7 +32,7 @@ script = ExtResource("2_2p5ge")
 metadata/_custom_type_script = "uid://0jkquaqdb3xp"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WeakspotHurtbox" unique_id=1614599056]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06541441, 0.10786059, -0.5705502)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06541446, 0.10786059, 0.6634327)
 shape = SubResource("BoxShape3D_lvo0j")
 debug_color = Color(0.9450875, 0.1759749, 0.40388775, 0.41960785)
 
