@@ -9,7 +9,7 @@ var last_dash = -99999.
 var dashing = false
 var dash_direction: Vector2
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not dashing:
 		return
 	player.velocity.x = dash_direction.x * dash_speed

@@ -23,6 +23,10 @@ config/icon="uid://bvgdypqvy2462"
 
 Global="*res://scripts/global.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [input]
 
 ui_left={

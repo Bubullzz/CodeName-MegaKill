@@ -64,7 +64,6 @@ metadata/_custom_type_script = "uid://suy82x121iat"
 [node name="DashComponent" type="Node" parent="." unique_id=1771703005 node_paths=PackedStringArray("player")]
 script = ExtResource("5_qlg0r")
 player = NodePath("..")
-dash_cooldow = 5
 dash_speed = 40.0
 dash_duration = 0.2
 metadata/_custom_type_script = "uid://bsh8ftf5qlqd0"
