@@ -1,36 +1,17 @@
 [gd_scene format=3 uid="uid://c7gcq5hpevi55"]
 
-[ext_resource type="Shader" uid="uid://d3enmqypxhrci" path="res://shaders/checkered_text.tres" id="1_rpg24"]
+[ext_resource type="PackedScene" uid="uid://1jevrd13aqe5" path="res://scenes/terrain.tscn" id="1_vqfsp"]
 [ext_resource type="PackedScene" uid="uid://bw1drfqajadyt" path="res://scenes/player.tscn" id="2_baglu"]
 [ext_resource type="PackedScene" uid="uid://5ntplykvk5fu" path="res://scenes/ui.tscn" id="4_h5ip5"]
 [ext_resource type="PackedScene" uid="uid://be3p8r6qjxrih" path="res://scenes/goons_manager.tscn" id="5_xvvcp"]
 [ext_resource type="Script" uid="uid://cl484a8d5fshe" path="res://scripts/goons_manager.gd" id="6_hh5oj"]
-[ext_resource type="PackedScene" uid="uid://bely0j6j6uet2" path="res://scenes/weapons/sniper_rifle.tscn" id="6_xvvcp"]
-[ext_resource type="PackedScene" uid="uid://b2k7ovklwdmjd" path="res://scenes/weapons/revolver.tscn" id="8_vqfsp"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g5ejs"]
-size = Vector3(5000, 1, 5000)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_g5ejs"]
-lightmap_size_hint = Vector2i(502, 502)
-size = Vector2(100, 100)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vi8l"]
-render_priority = 0
-shader = ExtResource("1_rpg24")
+[ext_resource type="PackedScene" path="res://scenes/weapons/sniper_rifle.tscn" id="6_xvvcp"]
+[ext_resource type="PackedScene" uid="uid://bscqva3x54vck" path="res://scenes/weapons/revolver.tscn" id="8_vqfsp"]
 
 [node name="Node3D" type="Node3D" unique_id=1353077265]
 
-[node name="Ground" type="StaticBody3D" parent="." unique_id=529462253]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1342923950]
-shape = SubResource("BoxShape3D_g5ejs")
-debug_color = Color(0.749012, 0.449002, 0.283825, 0.42)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=325510114]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587654, 0.116833, 0.000907898)
-mesh = SubResource("PlaneMesh_g5ejs")
-surface_material_override/0 = SubResource("ShaderMaterial_3vi8l")
+[node name="Terrain" parent="." unique_id=412484658 instance=ExtResource("1_vqfsp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -28.541618, 0)
 
 [node name="Player" parent="." unique_id=278495042 node_paths=PackedStringArray("left_weapon", "right_weapon") instance=ExtResource("2_baglu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64392, 0.5, -1.58216)
@@ -46,9 +27,10 @@ script = ExtResource("6_hh5oj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 22, 0)
 
 [node name="SniperRifle2" parent="." unique_id=1948452049 instance=ExtResource("6_xvvcp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.50712, 1, 60.6292)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.50712, -1010.1232, 60.6292)
 
 [node name="SniperRifle" parent="." unique_id=777304911 instance=ExtResource("6_xvvcp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.75356, 0.5, 30.3146)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.75356, -520.2484, 30.3146)
 
 [node name="Revolver" parent="." unique_id=59954801 instance=ExtResource("8_vqfsp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -132.73892, 0)
