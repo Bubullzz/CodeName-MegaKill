@@ -32,11 +32,15 @@ static func instantiate() -> Goon:
 	Global.goonManager.add_child(instance)
 	return instance
 	
+func lose_life(v:int):
+	GlyphLabel.instantiate(v)
+	health_component.damage(v)
+	
 func hit(w: Weapon):
-	health_component.damage(w.get_damage())
+	lose_life(w.get_damage())
 
 func weakspot_hit(w: Weapon):
-	health_component.damage(w.get_damage() * 3)
+	lose_life(w.get_damage() * 3)
 
 func _physics_process(delta: float) -> void:
 	var dir_2d = Vector2(direction_to_player.x, direction_to_player.z)
