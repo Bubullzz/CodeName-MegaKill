@@ -33,7 +33,7 @@ static func instantiate() -> Goon:
 	return instance
 	
 func lose_life(v:int):
-	GlyphLabel.instantiate(v)
+	GlyphLabel.instantiate(v, self)
 	health_component.damage(v)
 	
 func hit(w: Weapon):

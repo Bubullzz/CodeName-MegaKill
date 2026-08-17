@@ -46,4 +46,5 @@ func _input(event: InputEvent) -> void:
 	
 	# Bullshit blazing
 	if Input.is_key_pressed(KEY_0):
-		Goon.instantiate()
+		for i in range(30):
+			Goon.instantiate()
