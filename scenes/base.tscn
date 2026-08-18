@@ -24,7 +24,8 @@ right_weapon = NodePath("../SniperRifle")
 script = ExtResource("6_hh5oj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1438451221]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 22, 0)
+transform = Transform3D(-0.1785208, 0.9341297, -0.30908248, 0.46720606, 0.35693368, 0.80889857, 0.8659381, 0, -0.5001512, -92.68346, 46.319603, 0)
+sky_mode = 1
 
 [node name="SniperRifle2" parent="." unique_id=1948452049 instance=ExtResource("6_xvvcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.50712, -1010.1232, 60.6292)

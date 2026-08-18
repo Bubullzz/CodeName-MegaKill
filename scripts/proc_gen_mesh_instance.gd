@@ -30,8 +30,14 @@ const size:= 256
 		middle_offset = new
 		update_mesh()
 
+@export var color_grad :Gradient :
+	set(new):
+		color_grad = new
+		update_mesh()
+
 func _ready() -> void:
 	update_mesh()
+	
 func get_normal(x: float, y: float) -> Vector3:
 	var epsilon := size / resolution
 	var normal := Vector3(
@@ -54,18 +60,22 @@ func update_mesh() -> void:
 	plane.subdivide_width = resolution
 	plane.size = Vector2(size, size)
 	
-	var plane_arrays := plane.get_mesh_arrays()
+	var plane_arrays := plane.surface_get_arrays(0)
 	var vertex_array: PackedVector3Array = plane_arrays[ArrayMesh.ARRAY_VERTEX]
 	var normal_array: PackedVector3Array = plane_arrays[ArrayMesh.ARRAY_NORMAL]
 	var tangent_array: PackedFloat32Array = plane_arrays[ArrayMesh.ARRAY_TANGENT]
+	var color_array:= PackedColorArray()
+	color_array.resize(vertex_array.size())
 	
 	for i:int in vertex_array.size():
 		var vertex := vertex_array[i]
 		var normal := Vector3.UP
 		var tangent := Vector3.RIGHT
-		if noise:
-			vertex.y = get_height(vertex.x, vertex.z)
-			vertex.y += dist_to_center(vertex.x, vertex.z) * 1.
+		if noise and color_grad:
+			var h = get_height(vertex.x, vertex.z)
+			h += dist_to_center(vertex.x, vertex.z) * 1.
+			vertex.y = h
+			color_array[i] = color_grad.sample(h / float(height) + randf()/10.)
 			normal = get_normal(vertex.x, vertex.z)
 			tangent = normal.cross(Vector3.UP)
 		vertex_array[i] = vertex
@@ -74,6 +84,10 @@ func update_mesh() -> void:
 		tangent_array[4 * i + 1] = tangent.y
 		tangent_array[4 * i + 2] = tangent.z
 	
+	plane_arrays[ArrayMesh.ARRAY_COLOR] = color_array
 	var array_mesh:= ArrayMesh.new()
+	var material := StandardMaterial3D.new()
+	material.vertex_color_use_as_albedo = true
 	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, plane_arrays)
+	array_mesh.surface_set_material(0, material)
 	mesh = array_mesh
