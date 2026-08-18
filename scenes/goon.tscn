@@ -65,3 +65,4 @@ metadata/_custom_type_script = "uid://dqb04dxctlsba"
 
 [node name="TargetPlayerComponent" parent="." unique_id=739288033 instance=ExtResource("7_23mmg")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+delay_between_updates = 0.4

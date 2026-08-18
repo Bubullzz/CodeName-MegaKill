@@ -30,6 +30,7 @@ static func instantiate() -> Goon:
 	pos.y *= 1 if randi() % 2 else -1
 	instance.position = Global.player.position + Vector3(pos.x, 0, pos.y)
 	Global.goonManager.add_child(instance)
+	instance.scale = Vector3(3.,3.,3.)
 	return instance
 	
 func lose_life(v:int):

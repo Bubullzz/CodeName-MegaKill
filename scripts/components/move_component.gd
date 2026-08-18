@@ -8,9 +8,14 @@ class_name MoveComponent extends Node
 var wants_jump := false
 var has_dash_component := false
 
+var coyote_jump:= Timer.new()
+
 func _ready() -> void:
 	if dash_component:
 		has_dash_component = true
+	coyote_jump.one_shot = true
+	add_child(coyote_jump)
+
 # helper to easily connect the signal
 func set_wants_jump():
 	wants_jump = true
@@ -26,9 +31,11 @@ func move(direction: Vector2, delta: float) -> void:
 	# Gravity
 	if not body.is_on_floor():
 		body.velocity += body.get_gravity() * delta * gravity_multiplier
-		
+	else:
+		# if we are on floor, we can jump for the next .3 seconds
+		coyote_jump.start(.3)
 	# Jump
-	if wants_jump and body.is_on_floor():
+	if wants_jump and not coyote_jump.is_stopped():
 		body.velocity.y = jump_velocity
 	wants_jump = false
 	
