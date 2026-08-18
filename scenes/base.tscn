@@ -11,10 +11,10 @@
 [node name="Node3D" type="Node3D" unique_id=1353077265]
 
 [node name="Terrain" parent="." unique_id=412484658 instance=ExtResource("1_vqfsp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -28.541618, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -28.541618, 0)
 
 [node name="Player" parent="." unique_id=278495042 node_paths=PackedStringArray("left_weapon", "right_weapon") instance=ExtResource("2_baglu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64392, 0.5, -1.58216)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64392, 316.97083, -1.58216)
 left_weapon = NodePath("../Revolver")
 right_weapon = NodePath("../SniperRifle")
 
